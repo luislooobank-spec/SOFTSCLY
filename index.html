@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SoftSec L&Y - Estacionamiento</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-900 to-blue-700 font-sans">
+
+  <!-- Loading State -->
+  <div id="loading" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-lg flex items-center">
+      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mr-3"></div>
+      <span>Procesando...</span>
+    </div>
+  </div>
+
+  <!-- AUTH CONTAINER -->
+  <div id="authWrapper" class="min-h-screen flex items-center justify-center p-4">
+    <!-- LOGIN CARD -->
+    <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
+      <!-- LOGIN FORM -->
+      <div id="loginCard">
+        <div class="text-center mb-8">
+          
+          <h1 class="text-2xl font-bold text-gray-800">SoftSec L&Y</h1>
+          <p class="text-gray-600 mt-2">Sistema de Gestión de Estacionamiento</p>
+        </div>
+        
+        <form id="loginForm" class="space-y-5">
+          <div class="space-y-1">
+            <label for="usuario" class="block text-sm font-medium text-gray-700">Usuario</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-user text-gray-400"></i>
+              </div>
+              <input id="usuario" type="text" placeholder="Ingresa tu usuario" required 
+              class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+            </div>
+          </div>
+          
+          <div class="space-y-1">
+            <label for="contrasena" class="block text-sm font-medium text-gray-700">Contraseña</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-lock text-gray-400"></i>
+              </div>
+              <input id="contrasena" type="password" placeholder="Ingresa tu contraseña" required 
+                      class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between text-sm">
+            <label class="flex items-center">
+              <input type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+              <span class="ml-2 text-gray-600">Recordar sesión</span>
+            </label>
+            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">¿Olvidaste tu contraseña?</a>
+          </div>
+          
+          <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200">
+            Ingresar al Sistema
+          </button>
+        </form>
+        
+        <div class="mt-6 text-center">
+          <p class="text-gray-600">¿No tienes una cuenta? 
+            <button id="btnShowRegister" class="text-blue-600 font-semibold hover:text-blue-800 ml-1">
+              Crear cuenta nueva
+            </button>
+          </p>
+        </div>
+      </div>
+      
+      <!-- REGISTER FORM -->
+      <div id="registerCard" class="hidden">
+        <div class="text-center mb-8">
+          <div class="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-user-plus text-white text-2xl"></i>
+          </div>
+          <h1 class="text-2xl font-bold text-gray-800">Crear Cuenta</h1>
+          <p class="text-gray-600 mt-2">Registra un nuevo usuario</p>
+        </div>
+        
+        <form id="registerForm" class="space-y-5">
+          <div class="space-y-1">
+            <label for="nuevoUsuario" class="block text-sm font-medium text-gray-700">Usuario</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-user text-gray-400"></i>
+              </div>
+              <input id="nuevoUsuario" type="text" placeholder="Elige un nombre de usuario" required 
+                      class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+            </div>
+          </div>
+          
+          <div class="space-y-1">
+            <label for="nuevaContrasena" class="block text-sm font-medium text-gray-700">Contraseña</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-lock text-gray-400"></i>
+              </div>
+              <input id="nuevaContrasena" type="password" placeholder="Crea una contraseña segura" required 
+                      class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+            </div>
+            <p class="text-xs text-gray-500 mt-1">La contraseña debe tener al menos 6 caracteres</p>
+          </div>
+          
+          <div class="space-y-1">
+            <label for="confirmarContrasena" class="block text-sm font-medium text-gray-700">Confirmar Contraseña</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-lock text-gray-400"></i>
+              </div>
+              <input id="confirmarContrasena" type="password" placeholder="Repite tu contraseña" required 
+                      class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+            </div>
+          </div>
+          
+          <div class="flex items-start text-sm">
+            <input type="checkbox" required class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1">
+            <span class="ml-2 text-gray-600">Acepto los <a href="#" class="text-blue-600 hover:text-blue-800">términos y condiciones</a></span>
+          </div>
+          
+          <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-200">
+            Crear Cuenta
+          </button>
+        </form>
+        
+        <div class="mt-6 text-center">
+          <p class="text-gray-600">¿Ya tienes una cuenta? 
+            <button id="btnShowLogin" class="text-blue-600 font-semibold hover:text-blue-800 ml-1">
+              Iniciar sesión
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="app" class="hidden flex h-screen">
+    <!-- Sidebar -->
+    <aside class="w-72 bg-blue-900 text-white flex flex-col">
+      <div class="p-6 text-2xl font-bold border-b border-blue-700">
+         SoftSec L&Y
+      </div>
+      <nav class="flex-1 p-4 space-y-3">
+        <a href="#dashboard" data-target="dashboard" class="block py-2 px-3 rounded hover:bg-blue-700 navlink">Dashboard</a>
+        <a href="#entrada" data-target="entrada" class="block py-2 px-3 rounded hover:bg-blue-700 navlink">Registro Entrada</a>
+        <a href="#salida" data-target="salida" class="block py-2 px-3 rounded hover:bg-blue-700 navlink">Registro Salida</a>
+        <a href="#espacios" data-target="espacios" class="block py-2 px-3 rounded hover:bg-blue-700 navlink">Espacios</a>
+        <a href="#reportes" data-target="reportes" class="block py-2 px-3 rounded hover:bg-blue-700 navlink">Reportes</a>
+      </nav>
+      <div class="p-4 border-t border-blue-700 text-sm flex justify-between items-center">
+        <span>© 2025 SoftSec</span>
+        <button id="logoutBtn" class="bg-red-500 px-2 py-1 rounded text-xs hover:bg-red-600">Salir</button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 p-8 overflow-y-auto bg-gray-100">
+      <!-- dashboard -->
+      <section id="dashboard" class="section">
+        <div class="flex items-center justify-between mb-6">
+          <h1 class="text-3xl font-bold">Dashboard Principal</h1>
+          <div class="text-sm text-gray-600">Usuario: <span id="currentUser" class="font-medium"></span></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+          <div class="bg-white rounded-xl shadow p-4 text-center">
+            <h3 class="text-gray-600 text-sm">Vehículos Dentro</h3>
+            <p id="countDentro" class="text-3xl font-bold text-blue-600">0</p>
+          </div>
+          <div class="bg-white rounded-xl shadow p-4 text-center">
+            <h3 class="text-gray-600 text-sm">Vehículos Salidos</h3>
+            <p id="countSalidos" class="text-3xl font-bold text-green-600">0</p>
+          </div>
+          <div class="bg-white rounded-xl shadow p-4 text-center">
+            <h3 class="text-gray-600 text-sm">Ganancias Totales</h3>
+            <p id="totalGanancias" class="text-3xl font-bold text-yellow-600">$0</p>
+          </div>
+          <div class="bg-white rounded-xl shadow p-4 text-center">
+            <h3 class="text-gray-600 text-sm">Ocupación</h3>
+            <p id="ocupacionPct" class="text-3xl font-bold text-purple-600">0%</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl shadow p-6">
+            <h4 class="font-semibold mb-3">Últimas transacciones</h4>
+            <div id="recentTransactions" class="text-sm text-gray-700 space-y-2 max-h-48 overflow-y-auto"></div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow p-6">
+            <h4 class="font-semibold mb-3">Estado rápido de espacios</h4>
+            <div id="quickSpaces" class="grid grid-cols-4 gap-2"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- entrada -->
+      <section id="entrada" class="section hidden bg-white rounded-xl shadow p-6">
+        <h2 class="text-2xl font-semibold mb-4">🚘 Registro de Entrada</h2>
+        <form id="entradaForm" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+          <input id="placaEntrada" type="text" placeholder="Placa del vehículo" required class="border rounded-lg p-2 focus:ring-2 focus:ring-blue-500" />
+          <input id="conductorEntrada" type="text" placeholder="Nombre del conductor" required class="border rounded-lg p-2 focus:ring-2 focus:ring-blue-500" />
+          <select id="tipoEntrada" required class="border rounded-lg p-2 focus:ring-2 focus:ring-blue-500">
+            <option value="">Tipo de vehículo</option>
+            <option value="Carro">Carro</option>
+            <option value="Moto">Moto</option>
+          </select>
+          <button class="md:col-span-4 bg-blue-600 text-white rounded-lg py-2 hover:bg-blue-700">Registrar Entrada</button>
+        </form>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-blue-100 text-blue-900">
+                <th class="p-3 border-b">Placa</th>
+                <th class="p-3 border-b">Conductor</th>
+                <th class="p-3 border-b">Tipo</th>
+                <th class="p-3 border-b">Hora</th>
+                <th class="p-3 border-b">Espacio</th>
+              </tr>
+            </thead>
+            <tbody id="vehiculosBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- salida -->
+      <section id="salida" class="section hidden bg-white rounded-xl shadow p-6">
+        <h2 class="text-2xl font-semibold mb-4">🚪 Registro de Salida</h2>
+        <form id="salidaForm" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <input id="placaSalida" type="text" placeholder="Placa del vehículo" required class="border rounded-lg p-2 focus:ring-2 focus:ring-green-500" />
+          <button class="md:col-span-3 bg-green-600 text-white rounded-lg py-2 hover:bg-green-700">Registrar Salida</button>
+        </form>
+
+        <div class="text-sm text-gray-600 mb-4">
+          <p><b>Tarifas:</b> Carro $4.000 | Moto $3.000</p>
+          <p>Tarifa fija sin horas adicionales</p>
+        </div>
+      </section>
+
+      <!-- espacios -->
+      <section id="espacios" class="section hidden bg-white rounded-xl shadow p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-2xl font-semibold">🅿️ Gestión de Espacios</h2>
+          <div class="flex gap-2">
+            <input id="newSpaceName" type="text" placeholder="Nombre espacio (ej: A1)" class="border rounded-lg p-2" />
+            <button id="addSpaceBtn" class="bg-blue-600 text-white rounded-lg px-3 py-2 hover:bg-blue-700">Agregar</button>
+          </div>
+        </div>
+
+        <div id="spacesList" class="grid grid-cols-1 md:grid-cols-4 gap-3"></div>
+      </section>
+
+      <!-- reportes -->
+      <section id="reportes" class="section hidden bg-white rounded-xl shadow p-6">
+        <h2 class="text-2xl font-semibold mb-4">📊 Reportes</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div class="bg-gray-50 rounded p-4">
+            <h4 class="text-sm text-gray-600">Total Ganancias</h4>
+            <div id="reportGanancias" class="text-2xl font-bold mt-2">$0</div>
+          </div>
+          <div class="bg-gray-50 rounded p-4">
+            <h4 class="text-sm text-gray-600">Entradas Totales</h4>
+            <div id="reportEntradas" class="text-2xl font-bold mt-2">0</div>
+          </div>
+          <div class="bg-gray-50 rounded p-4">
+            <h4 class="text-sm text-gray-600">Salidas Totales</h4>
+            <div id="reportSalidas" class="text-2xl font-bold mt-2">0</div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded shadow p-4">
+          <h4 class="mb-3 font-semibold">Historial completo</h4>
+          <div id="fullHistory" class="text-sm text-gray-700 max-h-72 overflow-y-auto"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+<script>
+/* ===========================
+   MEJORAS IMPLEMENTADAS:
+   1. Sistema de notificaciones elegantes
+   2. Estados de carga (loading)
+   3. Tarifas fijas (sin horas extras)
+   4. Mejor manejo de errores
+   =========================== */
+
+// Sistema de notificaciones
+function mostrarAlerta(mensaje, tipo = 'info') {
+    const alerta = document.createElement('div');
+    alerta.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg text-white font-semibold z-50 ${
+        tipo === 'error' ? 'bg-red-500' : 
+        tipo === 'success' ? 'bg-green-500' : 'bg-blue-500'
+    }`;
+    alerta.textContent = mensaje;
+    document.body.appendChild(alerta);
+    
+    setTimeout(() => {
+        alerta.remove();
+    }, 3000);
+}
+
+// Estados de carga
+function mostrarLoading() {
+    document.getElementById('loading').classList.remove('hidden');
+}
+
+function ocultarLoading() {
+    document.getElementById('loading').classList.add('hidden');
+}
+
+// Cálculo de tarifas fijas (sin horas extras)
+function calcularTarifa(tipoVehiculo) {
+    const tarifas = {
+        Carro: 4000,
+        Moto: 3000
+    };
+    
+    return tarifas[tipoVehiculo];
+}
+
+/* ===========================
+   DATA & PERSISTENCE
+   =========================== */
+const STORAGE_KEYS = {
+  USERS: 'softsec_users_v1',
+  VEH: 'softsec_vehiculos_v1',
+  SPACES: 'softsec_spaces_v1',
+  META: 'softsec_meta_v1'
+};
+
+// Default meta (ganancias, contadores, history)
+let meta = {
+  ganancias: 0,
+  salidos: 0,
+  entradasTotales: 0,
+  history: [] // {type: 'entrada'|'salida'|'manual', placa, tipo, espacio, amount, time}
+};
+
+// Load or init
+function loadOrInit(key, fallback) {
+  const raw = localStorage.getItem(key);
+  return raw ? JSON.parse(raw) : fallback;
+}
+
+let usuarios = loadOrInit(STORAGE_KEYS.USERS, [{ usuario: 'pruebasena', contrasena: 'pruebasena' }]);
+let vehiculos = loadOrInit(STORAGE_KEYS.VEH, []); // {placa, conductor, tipo, hora, espacio}
+let spaces = loadOrInit(STORAGE_KEYS.SPACES, [
+  // sample: {id: 'A1', occupied: false}
+]);
+meta = loadOrInit(STORAGE_KEYS.META, meta);
+
+// Save helpers
+function saveAll() {
+  localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(usuarios));
+  localStorage.setItem(STORAGE_KEYS.VEH, JSON.stringify(vehiculos));
+  localStorage.setItem(STORAGE_KEYS.SPACES, JSON.stringify(spaces));
+  localStorage.setItem(STORAGE_KEYS.META, JSON.stringify(meta));
+}
+
+/* ===========================
+   UI & NAV
+   =========================== */
+const authWrapper = document.getElementById('authWrapper');
+const loginCard = document.getElementById('loginCard');
+const registerCard = document.getElementById('registerCard');
+const app = document.getElementById('app');
+
+const btnShowRegister = document.getElementById('btnShowRegister');
+const btnShowLogin = document.getElementById('btnShowLogin');
+const loginForm = document.getElementById('loginForm');
+const registerForm = document.getElementById('registerForm');
+const logoutBtn = document.getElementById('logoutBtn');
+const currentUserSpan = document.getElementById('currentUser');
+
+const sections = document.querySelectorAll('.section');
+const navlinks = document.querySelectorAll('.navlink');
+
+function showSection(id) {
+  sections.forEach(s => {
+    if (s.id === id) s.classList.remove('hidden'); else s.classList.add('hidden');
+  });
+  // highlight nav
+  navlinks.forEach(n => n.classList.toggle('bg-blue-800', n.dataset.target === id));
+}
+
+btnShowRegister.addEventListener('click', () => {
+  loginCard.classList.add('hidden');
+  registerCard.classList.remove('hidden');
+});
+btnShowLogin.addEventListener('click', () => {
+  registerCard.classList.add('hidden');
+  loginCard.classList.remove('hidden');
+});
+navlinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    showSection(link.dataset.target);
+  });
+});
+
+/* ===========================
+   AUTH
+   =========================== */
+let currentUser = null;
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  mostrarLoading();
+  
+  setTimeout(() => {
+    const u = document.getElementById('usuario').value.trim();
+    const p = document.getElementById('contrasena').value.trim();
+    const found = usuarios.find(x => x.usuario === u && x.contrasena === p);
+    if (found) {
+      currentUser = u;
+      loginComplete();
+      mostrarAlerta(`Bienvenido, ${u}`, 'success');
+    } else {
+      mostrarAlerta('Usuario o contraseña incorrectos', 'error');
+    }
+    ocultarLoading();
+  }, 1000);
+});
+
+registerForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  mostrarLoading();
+  
+  setTimeout(() => {
+    const u = document.getElementById('nuevoUsuario').value.trim();
+    const p = document.getElementById('nuevaContrasena').value.trim();
+    const confirmar = document.getElementById('confirmarContrasena').value.trim();
+    
+    if (!u || !p) {
+      mostrarAlerta('Complete todos los campos', 'error');
+      ocultarLoading();
+      return;
+    }
+    
+    if (p.length < 6) {
+      mostrarAlerta('La contraseña debe tener al menos 6 caracteres', 'error');
+      ocultarLoading();
+      return;
+    }
+    
+    if (p !== confirmar) {
+      mostrarAlerta('Las contraseñas no coinciden', 'error');
+      ocultarLoading();
+      return;
+    }
+    
+    if (usuarios.find(x => x.usuario === u)) {
+      mostrarAlerta('El usuario ya existe', 'error');
+      ocultarLoading();
+      return;
+    }
+    
+    usuarios.push({ usuario: u, contrasena: p });
+    saveAll();
+    mostrarAlerta('Usuario registrado exitosamente', 'success');
+    registerForm.reset();
+    registerCard.classList.add('hidden');
+    loginCard.classList.remove('hidden');
+    ocultarLoading();
+  }, 1000);
+});
+
+logoutBtn.addEventListener('click', () => {
+  currentUser = null;
+  app.classList.add('hidden');
+  authWrapper.classList.remove('hidden');
+  loginForm.reset();
+  mostrarAlerta('Sesión cerrada', 'info');
+});
+
+/* When login success */
+function loginComplete() {
+  authWrapper.classList.add('hidden');
+  app.classList.remove('hidden');
+  currentUserSpan.textContent = currentUser;
+  renderAll();
+  showSection('dashboard');
+}
+
+/* ===========================
+   SPACES MODULE
+   =========================== */
+const spacesList = document.getElementById('spacesList');
+const addSpaceBtn = document.getElementById('addSpaceBtn');
+const newSpaceName = document.getElementById('newSpaceName');
+
+addSpaceBtn.addEventListener('click', () => {
+  const name = newSpaceName.value.trim();
+  if (!name) {
+    mostrarAlerta('Ingrese un nombre para el espacio', 'error');
+    return;
+  }
+  if (spaces.find(s => s.id === name)) {
+    mostrarAlerta('Ya existe un espacio con ese nombre', 'error');
+    return;
+  }
+  spaces.push({ id: name, occupied: false });
+  newSpaceName.value = '';
+  saveAll();
+  renderSpaces();
+  updateQuickSpaces();
+  updateReports();
+  mostrarAlerta(`Espacio ${name} agregado`, 'success');
+});
+
+function renderSpaces() {
+  spacesList.innerHTML = spaces.map(s => `
+    <div class="p-3 border rounded-lg flex flex-col items-start ${s.occupied ? 'bg-red-50' : 'bg-white'}">
+      <div class="w-full flex justify-between items-center">
+        <div class="font-semibold">${s.id}</div>
+        <div class="text-xs ${s.occupied ? 'text-red-600' : 'text-green-600'}">${s.occupied ? 'Ocupado' : 'Disponible'}</div>
+      </div>
+      <div class="mt-2 w-full flex justify-between gap-2">
+        <button data-id="${s.id}" class="toggleSpaceBtn w-full ${s.occupied ? 'bg-yellow-400' : 'bg-blue-600'} text-white rounded py-1">${s.occupied ? 'Liberar' : 'Ocupar'}</button>
+        <button data-id="${s.id}" class="removeSpaceBtn w-full bg-gray-200 rounded py-1 text-sm">Eliminar</button>
+      </div>
+    </div>
+  `).join('');
+
+  // attach listeners
+  document.querySelectorAll('.toggleSpaceBtn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id;
+      const sp = spaces.find(x => x.id === id);
+      if (!sp) return;
+      
+      sp.occupied = !sp.occupied;
+      meta.history.unshift({
+        type: 'manual',
+        action: sp.occupied ? 'ocupar_espacio' : 'liberar_espacio',
+        espacio: id,
+        placa: null,
+        tipo: null,
+        amount: 0,
+        time: new Date().toLocaleString(),
+        by: currentUser || 'sistema'
+      });
+      saveAll();
+      renderSpaces();
+      updateQuickSpaces();
+      updateReports();
+      renderRecentTransactions();
+      renderFullHistory();
+      
+      mostrarAlerta(`Espacio ${id} ${sp.occupied ? 'ocupado' : 'liberado'}`, 'success');
+    });
+  });
+
+  document.querySelectorAll('.removeSpaceBtn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id;
+      if (!confirm(`¿Eliminar espacio ${id}?`)) return;
+      
+      const sp = spaces.find(x => x.id === id);
+      if (sp && sp.occupied) {
+        mostrarAlerta('No se puede eliminar un espacio ocupado', 'error');
+        return;
+      }
+      spaces = spaces.filter(x => x.id !== id);
+      saveAll();
+      renderSpaces();
+      updateQuickSpaces();
+      updateReports();
+      mostrarAlerta(`Espacio ${id} eliminado`, 'success');
+    });
+  });
+}
+
+/* ===========================
+   ENTRADA / SALIDA MODULES
+   =========================== */
+const entradaForm = document.getElementById('entradaForm');
+const salidaForm = document.getElementById('salidaForm');
+const vehiculosBody = document.getElementById('vehiculosBody');
+
+entradaForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const placa = document.getElementById('placaEntrada').value.trim().toUpperCase();
+  const conductor = document.getElementById('conductorEntrada').value.trim();
+  const tipo = document.getElementById('tipoEntrada').value;
+  const hora = new Date().toLocaleString();
+
+  if (!placa || !conductor || !tipo) {
+    mostrarAlerta('Complete todos los campos', 'error');
+    return;
+  }
+
+  if (vehiculos.find(v => v.placa === placa)) {
+    mostrarAlerta('Este vehículo ya está dentro del estacionamiento', 'error');
+    return;
+  }
+
+  // Find first available space
+  let assignedSpace = null;
+  for (let s of spaces) {
+    if (!s.occupied) { assignedSpace = s.id; break; }
+  }
+  if (!assignedSpace) {
+    mostrarAlerta('No hay espacios disponibles. Agregue más espacios', 'error');
+    return;
+  }
+
+  // occupy space
+  const spObj = spaces.find(s => s.id === assignedSpace);
+  spObj.occupied = true;
+
+  vehiculos.push({ placa, conductor, tipo, hora, espacio: assignedSpace });
+  meta.entradasTotales++;
+  meta.history.unshift({ type: 'entrada', placa, tipo, espacio: assignedSpace, amount: 0, time: hora, by: currentUser });
+  saveAll();
+  renderAll();
+  entradaForm.reset();
+  mostrarAlerta(`Vehículo ${placa} registrado en espacio ${assignedSpace}`, 'success');
+});
+
+salidaForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const placaSalida = document.getElementById('placaSalida').value.trim().toUpperCase();
+  const index = vehiculos.findIndex(v => v.placa === placaSalida);
+  if (index === -1) {
+    mostrarAlerta('No se encontró el vehículo', 'error');
+    return;
+  }
+
+  const v = vehiculos[index];
+  const tipo = v.tipo;
+  const cobro = calcularTarifa(tipo);
+  meta.ganancias += cobro;
+  meta.salidos++;
+  const hora = new Date().toLocaleString();
+
+  // free space
+  const sp = spaces.find(s => s.id === v.espacio);
+  if (sp) sp.occupied = false;
+
+  meta.history.unshift({ 
+    type: 'salida', 
+    placa: placaSalida, 
+    tipo, 
+    espacio: v.espacio, 
+    amount: cobro, 
+    time: hora, 
+    by: currentUser 
+  });
+
+  // remove vehicle
+  vehiculos.splice(index, 1);
+  saveAll();
+  renderAll();
+  salidaForm.reset();
+  
+  mostrarAlerta(
+    `Vehículo ${tipo} (${placaSalida}) salió\nTotal a cobrar: $${cobro.toLocaleString()}`,
+    'success'
+  );
+});
+
+/* ===========================
+   REPORTS & UI UPDATES
+   =========================== */
+const countDentro = document.getElementById('countDentro');
+const countSalidos = document.getElementById('countSalidos');
+const totalGanancias = document.getElementById('totalGanancias');
+const ocupacionPct = document.getElementById('ocupacionPct');
+
+const recentTransactions = document.getElementById('recentTransactions');
+const quickSpaces = document.getElementById('quickSpaces');
+
+const reportGanancias = document.getElementById('reportGanancias');
+const reportEntradas = document.getElementById('reportEntradas');
+const reportSalidas = document.getElementById('reportSalidas');
+const fullHistory = document.getElementById('fullHistory');
+
+function updateStats() {
+  countDentro.textContent = vehiculos.length;
+  countSalidos.textContent = meta.salidos;
+  totalGanancias.textContent = '$' + meta.ganancias.toLocaleString();
+  reportGanancias.textContent = '$' + meta.ganancias.toLocaleString();
+  reportEntradas.textContent = meta.entradasTotales;
+  reportSalidas.textContent = meta.salidos;
+
+  // occupancy percent
+  const totalSpaces = spaces.length || 0;
+  const occupied = spaces.filter(s => s.occupied).length;
+  const pct = totalSpaces === 0 ? 0 : Math.round((occupied / totalSpaces) * 100);
+  ocupacionPct.textContent = pct + '%';
+}
+
+function renderVehiculosTable() {
+  vehiculosBody.innerHTML = vehiculos.map(v => `
+    <tr class="hover:bg-gray-50">
+      <td class="p-3 border-b font-mono">${v.placa}</td>
+      <td class="p-3 border-b">${v.conductor}</td>
+      <td class="p-3 border-b">${v.tipo}</td>
+      <td class="p-3 border-b">${v.hora}</td>
+      <td class="p-3 border-b font-semibold">${v.espacio || '-'}</td>
+    </tr>
+  `).join('');
+}
+
+function renderRecentTransactions() {
+  recentTransactions.innerHTML = meta.history.slice(0,8).map(h => {
+    if (h.type === 'entrada') {
+      return `<div class="p-2 rounded bg-green-50 border border-green-100"><b>Entrada</b> ${h.placa} → ${h.espacio} <div class="text-xs text-gray-500">${h.time}</div></div>`;
+    } else if (h.type === 'salida') {
+      return `<div class="p-2 rounded bg-yellow-50 border border-yellow-100"><b>Salida</b> ${h.placa} → $${(h.amount||0).toLocaleString()} <div class="text-xs text-gray-500">${h.time}</div></div>`;
+    } else {
+      return `<div class="p-2 rounded bg-gray-50 border border-gray-100"><b>Manual</b> ${h.action || ''} - ${h.espacio || ''} <div class="text-xs text-gray-500">${h.time}</div></div>`;
+    }
+  }).join('');
+}
+
+function updateQuickSpaces() {
+  quickSpaces.innerHTML = spaces.slice(0,16).map(s => `
+    <div class="p-2 border rounded text-center ${s.occupied ? 'bg-red-100 text-red-700' : 'bg-white text-green-700'}">
+      <div class="font-semibold">${s.id}</div>
+      <div class="text-xs">${s.occupied ? 'Ocupado' : 'Libre'}</div>
+    </div>
+  `).join('');
+}
+
+function renderFullHistory() {
+  fullHistory.innerHTML = meta.history.map(h => {
+    if (h.type === 'entrada') {
+      return `<div class="p-2 border-b"><b>Entrada</b> - Placa: ${h.placa} | Espacio: ${h.espacio} <div class="text-xs text-gray-500">${h.time}</div></div>`;
+    } else if (h.type === 'salida') {
+      return `<div class="p-2 border-b"><b>Salida</b> - Placa: ${h.placa} | Cobro: $${(h.amount||0).toLocaleString()} <div class="text-xs text-gray-500">${h.time}</div></div>`;
+    } else {
+      return `<div class="p-2 border-b"><b>Manual</b> - ${h.action} | Espacio: ${h.espacio || '-'} <div class="text-xs text-gray-500">${h.time}</div></div>`;
+    }
+  }).join('');
+}
+
+/* ===========================
+   RENDER ALL
+   =========================== */
+function renderAll() {
+  renderSpaces();
+  renderVehiculosTable();
+  updateStats();
+  renderRecentTransactions();
+  updateQuickSpaces();
+  renderFullHistory();
+}
+
+/* ===========================
+   INITIALIZATION ON LOAD
+   =========================== */
+document.addEventListener('DOMContentLoaded', () => {
+  // Pre-populate some spaces if none exist
+  if (spaces.length === 0) {
+    const sample = ['A1','A2','A3','B1','B2','B3','C1','C2'];
+    spaces = sample.map(x => ({ id: x, occupied: false }));
+    saveAll();
+  }
+  // render on load (but app hidden until login)
+  renderAll();
+});
+</script>
+
+</body>
+</html>
