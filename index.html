@@ -20,24 +20,23 @@
   <!-- AUTH CONTAINER -->
   <div id="authWrapper" class="min-h-screen flex items-center justify-center p-4">
     <!-- LOGIN CARD -->
-    <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
+    <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 w-full max-w-md mx-4">
       <!-- LOGIN FORM -->
       <div id="loginCard">
-        <div class="text-center mb-8">
-          
-          <h1 class="text-2xl font-bold text-gray-800">SoftSec L&Y</h1>
-          <p class="text-gray-600 mt-2">Sistema de Gestión de Estacionamiento</p>
+        <div class="text-center mb-6 sm:mb-8">
+          <h1 class="text-xl sm:text-2xl font-bold text-gray-800">SoftSec L&Y</h1>
+          <p class="text-gray-600 mt-2 text-sm sm:text-base">Sistema de Gestión de Estacionamiento</p>
         </div>
         
-        <form id="loginForm" class="space-y-5">
+        <form id="loginForm" class="space-y-4 sm:space-y-5">
           <div class="space-y-1">
             <label for="usuario" class="block text-sm font-medium text-gray-700">Usuario</label>
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <i class="fas fa-user text-gray-400"></i>
+                <i class="fas fa-user text-gray-400 text-sm sm:text-base"></i>
               </div>
               <input id="usuario" type="text" placeholder="Ingresa tu usuario" required 
-              class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+              class="w-full pl-10 pr-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition text-sm sm:text-base">
             </div>
           </div>
           
@@ -45,14 +44,14 @@
             <label for="contrasena" class="block text-sm font-medium text-gray-700">Contraseña</label>
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <i class="fas fa-lock text-gray-400"></i>
+                <i class="fas fa-lock text-gray-400 text-sm sm:text-base"></i>
               </div>
               <input id="contrasena" type="password" placeholder="Ingresa tu contraseña" required 
-                      class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                      class="w-full pl-10 pr-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition text-sm sm:text-base">
             </div>
           </div>
           
-          <div class="flex items-center justify-between text-sm">
+          <div class="flex items-center justify-between text-xs sm:text-sm">
             <label class="flex items-center">
               <input type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
               <span class="ml-2 text-gray-600">Recordar sesión</span>
@@ -60,13 +59,13 @@
             <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">¿Olvidaste tu contraseña?</a>
           </div>
           
-          <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200">
+          <button type="submit" class="w-full bg-blue-600 text-white py-2 sm:py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200 text-sm sm:text-base">
             Ingresar al Sistema
           </button>
         </form>
         
-        <div class="mt-6 text-center">
-          <p class="text-gray-600">¿No tienes una cuenta? 
+        <div class="mt-4 sm:mt-6 text-center">
+          <p class="text-gray-600 text-xs sm:text-sm">¿No tienes una cuenta? 
             <button id="btnShowRegister" class="text-blue-600 font-semibold hover:text-blue-800 ml-1">
               Crear cuenta nueva
             </button>
@@ -76,23 +75,23 @@
       
       <!-- REGISTER FORM -->
       <div id="registerCard" class="hidden">
-        <div class="text-center mb-8">
-          <div class="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-user-plus text-white text-2xl"></i>
+        <div class="text-center mb-6 sm:mb-8">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 bg-green-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-user-plus text-white text-xl sm:text-2xl"></i>
           </div>
-          <h1 class="text-2xl font-bold text-gray-800">Crear Cuenta</h1>
-          <p class="text-gray-600 mt-2">Registra un nuevo usuario</p>
+          <h1 class="text-xl sm:text-2xl font-bold text-gray-800">Crear Cuenta</h1>
+          <p class="text-gray-600 mt-2 text-sm sm:text-base">Registra un nuevo usuario</p>
         </div>
         
-        <form id="registerForm" class="space-y-5">
+        <form id="registerForm" class="space-y-4 sm:space-y-5">
           <div class="space-y-1">
             <label for="nuevoUsuario" class="block text-sm font-medium text-gray-700">Usuario</label>
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <i class="fas fa-user text-gray-400"></i>
+                <i class="fas fa-user text-gray-400 text-sm sm:text-base"></i>
               </div>
               <input id="nuevoUsuario" type="text" placeholder="Elige un nombre de usuario" required 
-                      class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                      class="w-full pl-10 pr-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition text-sm sm:text-base">
             </div>
           </div>
           
@@ -100,10 +99,10 @@
             <label for="nuevaContrasena" class="block text-sm font-medium text-gray-700">Contraseña</label>
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <i class="fas fa-lock text-gray-400"></i>
+                <i class="fas fa-lock text-gray-400 text-sm sm:text-base"></i>
               </div>
               <input id="nuevaContrasena" type="password" placeholder="Crea una contraseña segura" required 
-                      class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                      class="w-full pl-10 pr-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition text-sm sm:text-base">
             </div>
             <p class="text-xs text-gray-500 mt-1">La contraseña debe tener al menos 6 caracteres</p>
           </div>
@@ -112,25 +111,25 @@
             <label for="confirmarContrasena" class="block text-sm font-medium text-gray-700">Confirmar Contraseña</label>
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <i class="fas fa-lock text-gray-400"></i>
+                <i class="fas fa-lock text-gray-400 text-sm sm:text-base"></i>
               </div>
               <input id="confirmarContrasena" type="password" placeholder="Repite tu contraseña" required 
-                      class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                      class="w-full pl-10 pr-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition text-sm sm:text-base">
             </div>
           </div>
           
-          <div class="flex items-start text-sm">
+          <div class="flex items-start text-xs sm:text-sm">
             <input type="checkbox" required class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1">
             <span class="ml-2 text-gray-600">Acepto los <a href="#" class="text-blue-600 hover:text-blue-800">términos y condiciones</a></span>
           </div>
           
-          <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-200">
+          <button type="submit" class="w-full bg-green-600 text-white py-2 sm:py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-200 text-sm sm:text-base">
             Crear Cuenta
           </button>
         </form>
         
-        <div class="mt-6 text-center">
-          <p class="text-gray-600">¿Ya tienes una cuenta? 
+        <div class="mt-4 sm:mt-6 text-center">
+          <p class="text-gray-600 text-xs sm:text-sm">¿Ya tienes una cuenta? 
             <button id="btnShowLogin" class="text-blue-600 font-semibold hover:text-blue-800 ml-1">
               Iniciar sesión
             </button>
@@ -141,89 +140,107 @@
   </div>
 
   <!-- APP -->
-  <div id="app" class="hidden flex h-screen">
+  <div id="app" class="hidden flex flex-col lg:flex-row h-screen">
+    <!-- Mobile Menu Button -->
+    <div class="lg:hidden bg-blue-900 text-white p-4 flex justify-between items-center">
+      <div class="text-xl font-bold">SoftSec L&Y</div>
+      <button id="mobileMenuBtn" class="p-2 rounded-lg hover:bg-blue-700">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+
     <!-- Sidebar -->
-    <aside class="w-72 bg-blue-900 text-white flex flex-col">
-      <div class="p-6 text-2xl font-bold border-b border-blue-700">
-         SoftSec L&Y
+    <aside id="sidebar" class="w-full lg:w-72 bg-blue-900 text-white flex-col hidden lg:flex">
+      <div class="p-4 lg:p-6 text-xl lg:text-2xl font-bold border-b border-blue-700">
+        SoftSec L&Y
       </div>
-      <nav class="flex-1 p-4 space-y-3">
-        <a href="#dashboard" data-target="dashboard" class="block py-2 px-3 rounded hover:bg-blue-700 navlink">Dashboard</a>
-        <a href="#entrada" data-target="entrada" class="block py-2 px-3 rounded hover:bg-blue-700 navlink">Registro Entrada</a>
-        <a href="#salida" data-target="salida" class="block py-2 px-3 rounded hover:bg-blue-700 navlink">Registro Salida</a>
-        <a href="#espacios" data-target="espacios" class="block py-2 px-3 rounded hover:bg-blue-700 navlink">Espacios</a>
-        <a href="#reportes" data-target="reportes" class="block py-2 px-3 rounded hover:bg-blue-700 navlink">Reportes</a>
+      <nav class="flex-1 p-4 space-y-2 lg:space-y-3">
+        <a href="#dashboard" data-target="dashboard" class="block py-2 px-3 rounded hover:bg-blue-700 navlink text-sm lg:text-base">
+          <i class="fas fa-chart-line w-6 mr-2"></i>Dashboard
+        </a>
+        <a href="#entrada" data-target="entrada" class="block py-2 px-3 rounded hover:bg-blue-700 navlink text-sm lg:text-base">
+          <i class="fas fa-sign-in-alt w-6 mr-2"></i>Registro Entrada
+        </a>
+        <a href="#salida" data-target="salida" class="block py-2 px-3 rounded hover:bg-blue-700 navlink text-sm lg:text-base">
+          <i class="fas fa-sign-out-alt w-6 mr-2"></i>Registro Salida
+        </a>
+        <a href="#espacios" data-target="espacios" class="block py-2 px-3 rounded hover:bg-blue-700 navlink text-sm lg:text-base">
+          <i class="fas fa-parking w-6 mr-2"></i>Espacios
+        </a>
+        <a href="#reportes" data-target="reportes" class="block py-2 px-3 rounded hover:bg-blue-700 navlink text-sm lg:text-base">
+          <i class="fas fa-chart-bar w-6 mr-2"></i>Reportes
+        </a>
       </nav>
-      <div class="p-4 border-t border-blue-700 text-sm flex justify-between items-center">
+      <div class="p-4 border-t border-blue-700 text-xs lg:text-sm flex justify-between items-center">
         <span>© 2025 SoftSec</span>
-        <button id="logoutBtn" class="bg-red-500 px-2 py-1 rounded text-xs hover:bg-red-600">Salir</button>
+        <button id="logoutBtn" class="bg-red-500 px-2 py-1 rounded hover:bg-red-600 text-xs">Salir</button>
       </div>
     </aside>
 
     <!-- Main content -->
-    <main class="flex-1 p-8 overflow-y-auto bg-gray-100">
+    <main class="flex-1 p-4 lg:p-8 overflow-y-auto bg-gray-100">
       <!-- dashboard -->
       <section id="dashboard" class="section">
-        <div class="flex items-center justify-between mb-6">
-          <h1 class="text-3xl font-bold">Dashboard Principal</h1>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 lg:mb-6 gap-2">
+          <h1 class="text-2xl lg:text-3xl font-bold">Dashboard Principal</h1>
           <div class="text-sm text-gray-600">Usuario: <span id="currentUser" class="font-medium"></span></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-          <div class="bg-white rounded-xl shadow p-4 text-center">
-            <h3 class="text-gray-600 text-sm">Vehículos Dentro</h3>
-            <p id="countDentro" class="text-3xl font-bold text-blue-600">0</p>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 lg:mb-6">
+          <div class="bg-white rounded-xl shadow p-3 lg:p-4 text-center">
+            <h3 class="text-gray-600 text-xs lg:text-sm">Vehículos Dentro</h3>
+            <p id="countDentro" class="text-xl lg:text-3xl font-bold text-blue-600">0</p>
           </div>
-          <div class="bg-white rounded-xl shadow p-4 text-center">
-            <h3 class="text-gray-600 text-sm">Vehículos Salidos</h3>
-            <p id="countSalidos" class="text-3xl font-bold text-green-600">0</p>
+          <div class="bg-white rounded-xl shadow p-3 lg:p-4 text-center">
+            <h3 class="text-gray-600 text-xs lg:text-sm">Vehículos Salidos</h3>
+            <p id="countSalidos" class="text-xl lg:text-3xl font-bold text-green-600">0</p>
           </div>
-          <div class="bg-white rounded-xl shadow p-4 text-center">
-            <h3 class="text-gray-600 text-sm">Ganancias Totales</h3>
-            <p id="totalGanancias" class="text-3xl font-bold text-yellow-600">$0</p>
+          <div class="bg-white rounded-xl shadow p-3 lg:p-4 text-center">
+            <h3 class="text-gray-600 text-xs lg:text-sm">Ganancias Totales</h3>
+            <p id="totalGanancias" class="text-xl lg:text-3xl font-bold text-yellow-600">$0</p>
           </div>
-          <div class="bg-white rounded-xl shadow p-4 text-center">
-            <h3 class="text-gray-600 text-sm">Ocupación</h3>
-            <p id="ocupacionPct" class="text-3xl font-bold text-purple-600">0%</p>
+          <div class="bg-white rounded-xl shadow p-3 lg:p-4 text-center">
+            <h3 class="text-gray-600 text-xs lg:text-sm">Ocupación</h3>
+            <p id="ocupacionPct" class="text-xl lg:text-3xl font-bold text-purple-600">0%</p>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-white rounded-xl shadow p-6">
-            <h4 class="font-semibold mb-3">Últimas transacciones</h4>
-            <div id="recentTransactions" class="text-sm text-gray-700 space-y-2 max-h-48 overflow-y-auto"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+          <div class="bg-white rounded-xl shadow p-4 lg:p-6">
+            <h4 class="font-semibold mb-3 text-sm lg:text-base">Últimas transacciones</h4>
+            <div id="recentTransactions" class="text-xs lg:text-sm text-gray-700 space-y-2 max-h-48 overflow-y-auto"></div>
           </div>
 
-          <div class="bg-white rounded-xl shadow p-6">
-            <h4 class="font-semibold mb-3">Estado rápido de espacios</h4>
-            <div id="quickSpaces" class="grid grid-cols-4 gap-2"></div>
+          <div class="bg-white rounded-xl shadow p-4 lg:p-6">
+            <h4 class="font-semibold mb-3 text-sm lg:text-base">Estado rápido de espacios</h4>
+            <div id="quickSpaces" class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4 gap-1 lg:gap-2"></div>
           </div>
         </div>
       </section>
 
       <!-- entrada -->
-      <section id="entrada" class="section hidden bg-white rounded-xl shadow p-6">
-        <h2 class="text-2xl font-semibold mb-4">🚘 Registro de Entrada</h2>
-        <form id="entradaForm" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-          <input id="placaEntrada" type="text" placeholder="Placa del vehículo" required class="border rounded-lg p-2 focus:ring-2 focus:ring-blue-500" />
-          <input id="conductorEntrada" type="text" placeholder="Nombre del conductor" required class="border rounded-lg p-2 focus:ring-2 focus:ring-blue-500" />
-          <select id="tipoEntrada" required class="border rounded-lg p-2 focus:ring-2 focus:ring-blue-500">
+      <section id="entrada" class="section hidden bg-white rounded-xl shadow p-4 lg:p-6">
+        <h2 class="text-xl lg:text-2xl font-semibold mb-4">🚘 Registro de Entrada</h2>
+        <form id="entradaForm" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 mb-4">
+          <input id="placaEntrada" type="text" placeholder="Placa del vehículo" required class="border rounded-lg p-2 text-sm lg:text-base focus:ring-2 focus:ring-blue-500" />
+          <input id="conductorEntrada" type="text" placeholder="Nombre del conductor" required class="border rounded-lg p-2 text-sm lg:text-base focus:ring-2 focus:ring-blue-500" />
+          <select id="tipoEntrada" required class="border rounded-lg p-2 text-sm lg:text-base focus:ring-2 focus:ring-blue-500">
             <option value="">Tipo de vehículo</option>
             <option value="Carro">Carro</option>
             <option value="Moto">Moto</option>
           </select>
-          <button class="md:col-span-4 bg-blue-600 text-white rounded-lg py-2 hover:bg-blue-700">Registrar Entrada</button>
+          <button class="sm:col-span-2 lg:col-span-4 bg-blue-600 text-white rounded-lg py-2 text-sm lg:text-base hover:bg-blue-700">Registrar Entrada</button>
         </form>
 
         <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
+          <table class="w-full text-left border-collapse text-sm lg:text-base">
             <thead>
               <tr class="bg-blue-100 text-blue-900">
-                <th class="p-3 border-b">Placa</th>
-                <th class="p-3 border-b">Conductor</th>
-                <th class="p-3 border-b">Tipo</th>
-                <th class="p-3 border-b">Hora</th>
-                <th class="p-3 border-b">Espacio</th>
+                <th class="p-2 lg:p-3 border-b text-xs lg:text-sm">Placa</th>
+                <th class="p-2 lg:p-3 border-b text-xs lg:text-sm">Conductor</th>
+                <th class="p-2 lg:p-3 border-b text-xs lg:text-sm">Tipo</th>
+                <th class="p-2 lg:p-3 border-b text-xs lg:text-sm">Hora</th>
+                <th class="p-2 lg:p-3 border-b text-xs lg:text-sm">Espacio</th>
               </tr>
             </thead>
             <tbody id="vehiculosBody"></tbody>
@@ -232,72 +249,73 @@
       </section>
 
       <!-- salida -->
-      <section id="salida" class="section hidden bg-white rounded-xl shadow p-6">
-        <h2 class="text-2xl font-semibold mb-4">🚪 Registro de Salida</h2>
-        <form id="salidaForm" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <input id="placaSalida" type="text" placeholder="Placa del vehículo" required class="border rounded-lg p-2 focus:ring-2 focus:ring-green-500" />
-          <button class="md:col-span-3 bg-green-600 text-white rounded-lg py-2 hover:bg-green-700">Registrar Salida</button>
+      <section id="salida" class="section hidden bg-white rounded-xl shadow p-4 lg:p-6">
+        <h2 class="text-xl lg:text-2xl font-semibold mb-4">🚪 Registro de Salida</h2>
+        <form id="salidaForm" class="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-4 mb-4">
+          <input id="placaSalida" type="text" placeholder="Placa del vehículo" required class="border rounded-lg p-2 text-sm lg:text-base focus:ring-2 focus:ring-green-500 lg:col-span-2" />
+          <button class="bg-green-600 text-white rounded-lg py-2 text-sm lg:text-base hover:bg-green-700">Registrar Salida</button>
         </form>
 
-        <div class="text-sm text-gray-600 mb-4">
+        <div class="text-xs lg:text-sm text-gray-600 mb-4">
           <p><b>Tarifas:</b> Carro $4.000 | Moto $3.000</p>
           <p>Tarifa fija sin horas adicionales</p>
         </div>
       </section>
 
       <!-- espacios -->
-      <section id="espacios" class="section hidden bg-white rounded-xl shadow p-6">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-2xl font-semibold">🅿️ Gestión de Espacios</h2>
+      <section id="espacios" class="section hidden bg-white rounded-xl shadow p-4 lg:p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+          <h2 class="text-xl lg:text-2xl font-semibold">🅿️ Gestión de Espacios</h2>
           <div class="flex gap-2">
-            <input id="newSpaceName" type="text" placeholder="Nombre espacio (ej: A1)" class="border rounded-lg p-2" />
-            <button id="addSpaceBtn" class="bg-blue-600 text-white rounded-lg px-3 py-2 hover:bg-blue-700">Agregar</button>
+            <input id="newSpaceName" type="text" placeholder="Nombre espacio (ej: A1)" class="border rounded-lg p-2 text-sm lg:text-base w-24 sm:w-auto" />
+            <button id="addSpaceBtn" class="bg-blue-600 text-white rounded-lg px-3 py-2 text-sm lg:text-base hover:bg-blue-700">Agregar</button>
           </div>
         </div>
 
-        <div id="spacesList" class="grid grid-cols-1 md:grid-cols-4 gap-3"></div>
+        <div id="spacesList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"></div>
       </section>
 
       <!-- reportes -->
-      <section id="reportes" class="section hidden bg-white rounded-xl shadow p-6">
-        <h2 class="text-2xl font-semibold mb-4">📊 Reportes</h2>
+      <section id="reportes" class="section hidden bg-white rounded-xl shadow p-4 lg:p-6">
+        <h2 class="text-xl lg:text-2xl font-semibold mb-4">📊 Reportes</h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <div class="bg-gray-50 rounded p-4">
-            <h4 class="text-sm text-gray-600">Total Ganancias</h4>
-            <div id="reportGanancias" class="text-2xl font-bold mt-2">$0</div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 lg:gap-4 mb-4">
+          <div class="bg-gray-50 rounded p-3 lg:p-4">
+            <h4 class="text-xs lg:text-sm text-gray-600">Total Ganancias</h4>
+            <div id="reportGanancias" class="text-lg lg:text-2xl font-bold mt-2">$0</div>
           </div>
-          <div class="bg-gray-50 rounded p-4">
-            <h4 class="text-sm text-gray-600">Entradas Totales</h4>
-            <div id="reportEntradas" class="text-2xl font-bold mt-2">0</div>
+          <div class="bg-gray-50 rounded p-3 lg:p-4">
+            <h4 class="text-xs lg:text-sm text-gray-600">Entradas Totales</h4>
+            <div id="reportEntradas" class="text-lg lg:text-2xl font-bold mt-2">0</div>
           </div>
-          <div class="bg-gray-50 rounded p-4">
-            <h4 class="text-sm text-gray-600">Salidas Totales</h4>
-            <div id="reportSalidas" class="text-2xl font-bold mt-2">0</div>
+          <div class="bg-gray-50 rounded p-3 lg:p-4">
+            <h4 class="text-xs lg:text-sm text-gray-600">Salidas Totales</h4>
+            <div id="reportSalidas" class="text-lg lg:text-2xl font-bold mt-2">0</div>
           </div>
         </div>
 
-        <div class="bg-white rounded shadow p-4">
-          <h4 class="mb-3 font-semibold">Historial completo</h4>
-          <div id="fullHistory" class="text-sm text-gray-700 max-h-72 overflow-y-auto"></div>
+        <div class="bg-white rounded shadow p-3 lg:p-4">
+          <h4 class="mb-3 font-semibold text-sm lg:text-base">Historial completo</h4>
+          <div id="fullHistory" class="text-xs lg:text-sm text-gray-700 max-h-72 overflow-y-auto"></div>
         </div>
       </section>
     </main>
   </div>
 
 <script>
-/* ===========================
-   MEJORAS IMPLEMENTADAS:
-   1. Sistema de notificaciones elegantes
-   2. Estados de carga (loading)
-   3. Tarifas fijas (sin horas extras)
-   4. Mejor manejo de errores
-   =========================== */
+// ===========================
+// MEJORAS RESPONSIVE AGREGADAS:
+// 1. Menú móvil colapsable
+// 2. Textos escalables (sm:, lg:)
+// 3. Grids adaptables (1 col móvil, 2-4 col desktop)
+// 4. Espaciado responsive
+// 5. Iconos en sidebar móvil
+// ===========================
 
 // Sistema de notificaciones
 function mostrarAlerta(mensaje, tipo = 'info') {
     const alerta = document.createElement('div');
-    alerta.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg text-white font-semibold z-50 ${
+    alerta.className = `fixed top-4 right-4 p-3 lg:p-4 rounded-lg shadow-lg text-white font-semibold z-50 text-sm lg:text-base ${
         tipo === 'error' ? 'bg-red-500' : 
         tipo === 'success' ? 'bg-green-500' : 'bg-blue-500'
     }`;
@@ -328,9 +346,30 @@ function calcularTarifa(tipoVehiculo) {
     return tarifas[tipoVehiculo];
 }
 
-/* ===========================
-   DATA & PERSISTENCE
-   =========================== */
+// ===========================
+// MENÚ MÓVIL
+// ===========================
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const sidebar = document.getElementById('sidebar');
+
+mobileMenuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('hidden');
+    sidebar.classList.toggle('flex');
+});
+
+// Cerrar menú móvil al hacer clic en un link
+document.querySelectorAll('.navlink').forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth < 1024) { // lg breakpoint
+            sidebar.classList.add('hidden');
+            sidebar.classList.remove('flex');
+        }
+    });
+});
+
+// ===========================
+// DATA & PERSISTENCE
+// ===========================
 const STORAGE_KEYS = {
   USERS: 'softsec_users_v1',
   VEH: 'softsec_vehiculos_v1',
@@ -367,9 +406,9 @@ function saveAll() {
   localStorage.setItem(STORAGE_KEYS.META, JSON.stringify(meta));
 }
 
-/* ===========================
-   UI & NAV
-   =========================== */
+// ===========================
+// UI & NAV
+// ===========================
 const authWrapper = document.getElementById('authWrapper');
 const loginCard = document.getElementById('loginCard');
 const registerCard = document.getElementById('registerCard');
@@ -408,9 +447,9 @@ navlinks.forEach(link => {
   });
 });
 
-/* ===========================
-   AUTH
-   =========================== */
+// ===========================
+// AUTH
+// ===========================
 let currentUser = null;
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -491,9 +530,9 @@ function loginComplete() {
   showSection('dashboard');
 }
 
-/* ===========================
-   SPACES MODULE
-   =========================== */
+// ===========================
+// SPACES MODULE
+// ===========================
 const spacesList = document.getElementById('spacesList');
 const addSpaceBtn = document.getElementById('addSpaceBtn');
 const newSpaceName = document.getElementById('newSpaceName');
@@ -521,12 +560,12 @@ function renderSpaces() {
   spacesList.innerHTML = spaces.map(s => `
     <div class="p-3 border rounded-lg flex flex-col items-start ${s.occupied ? 'bg-red-50' : 'bg-white'}">
       <div class="w-full flex justify-between items-center">
-        <div class="font-semibold">${s.id}</div>
+        <div class="font-semibold text-sm lg:text-base">${s.id}</div>
         <div class="text-xs ${s.occupied ? 'text-red-600' : 'text-green-600'}">${s.occupied ? 'Ocupado' : 'Disponible'}</div>
       </div>
       <div class="mt-2 w-full flex justify-between gap-2">
-        <button data-id="${s.id}" class="toggleSpaceBtn w-full ${s.occupied ? 'bg-yellow-400' : 'bg-blue-600'} text-white rounded py-1">${s.occupied ? 'Liberar' : 'Ocupar'}</button>
-        <button data-id="${s.id}" class="removeSpaceBtn w-full bg-gray-200 rounded py-1 text-sm">Eliminar</button>
+        <button data-id="${s.id}" class="toggleSpaceBtn w-full ${s.occupied ? 'bg-yellow-400' : 'bg-blue-600'} text-white rounded py-1 text-xs lg:text-sm">${s.occupied ? 'Liberar' : 'Ocupar'}</button>
+        <button data-id="${s.id}" class="removeSpaceBtn w-full bg-gray-200 rounded py-1 text-xs lg:text-sm">Eliminar</button>
       </div>
     </div>
   `).join('');
@@ -580,9 +619,9 @@ function renderSpaces() {
   });
 }
 
-/* ===========================
-   ENTRADA / SALIDA MODULES
-   =========================== */
+// ===========================
+// ENTRADA / SALIDA MODULES
+// ===========================
 const entradaForm = document.getElementById('entradaForm');
 const salidaForm = document.getElementById('salidaForm');
 const vehiculosBody = document.getElementById('vehiculosBody');
@@ -669,9 +708,9 @@ salidaForm.addEventListener('submit', (e) => {
   );
 });
 
-/* ===========================
-   REPORTS & UI UPDATES
-   =========================== */
+// ===========================
+// REPORTS & UI UPDATES
+// ===========================
 const countDentro = document.getElementById('countDentro');
 const countSalidos = document.getElementById('countSalidos');
 const totalGanancias = document.getElementById('totalGanancias');
@@ -703,11 +742,11 @@ function updateStats() {
 function renderVehiculosTable() {
   vehiculosBody.innerHTML = vehiculos.map(v => `
     <tr class="hover:bg-gray-50">
-      <td class="p-3 border-b font-mono">${v.placa}</td>
-      <td class="p-3 border-b">${v.conductor}</td>
-      <td class="p-3 border-b">${v.tipo}</td>
-      <td class="p-3 border-b">${v.hora}</td>
-      <td class="p-3 border-b font-semibold">${v.espacio || '-'}</td>
+      <td class="p-2 lg:p-3 border-b font-mono text-xs lg:text-sm">${v.placa}</td>
+      <td class="p-2 lg:p-3 border-b text-xs lg:text-sm">${v.conductor}</td>
+      <td class="p-2 lg:p-3 border-b text-xs lg:text-sm">${v.tipo}</td>
+      <td class="p-2 lg:p-3 border-b text-xs lg:text-sm">${v.hora}</td>
+      <td class="p-2 lg:p-3 border-b font-semibold text-xs lg:text-sm">${v.espacio || '-'}</td>
     </tr>
   `).join('');
 }
@@ -715,11 +754,11 @@ function renderVehiculosTable() {
 function renderRecentTransactions() {
   recentTransactions.innerHTML = meta.history.slice(0,8).map(h => {
     if (h.type === 'entrada') {
-      return `<div class="p-2 rounded bg-green-50 border border-green-100"><b>Entrada</b> ${h.placa} → ${h.espacio} <div class="text-xs text-gray-500">${h.time}</div></div>`;
+      return `<div class="p-2 rounded bg-green-50 border border-green-100 text-xs lg:text-sm"><b>Entrada</b> ${h.placa} → ${h.espacio} <div class="text-xs text-gray-500">${h.time}</div></div>`;
     } else if (h.type === 'salida') {
-      return `<div class="p-2 rounded bg-yellow-50 border border-yellow-100"><b>Salida</b> ${h.placa} → $${(h.amount||0).toLocaleString()} <div class="text-xs text-gray-500">${h.time}</div></div>`;
+      return `<div class="p-2 rounded bg-yellow-50 border border-yellow-100 text-xs lg:text-sm"><b>Salida</b> ${h.placa} → $${(h.amount||0).toLocaleString()} <div class="text-xs text-gray-500">${h.time}</div></div>`;
     } else {
-      return `<div class="p-2 rounded bg-gray-50 border border-gray-100"><b>Manual</b> ${h.action || ''} - ${h.espacio || ''} <div class="text-xs text-gray-500">${h.time}</div></div>`;
+      return `<div class="p-2 rounded bg-gray-50 border border-gray-100 text-xs lg:text-sm"><b>Manual</b> ${h.action || ''} - ${h.espacio || ''} <div class="text-xs text-gray-500">${h.time}</div></div>`;
     }
   }).join('');
 }
@@ -727,7 +766,7 @@ function renderRecentTransactions() {
 function updateQuickSpaces() {
   quickSpaces.innerHTML = spaces.slice(0,16).map(s => `
     <div class="p-2 border rounded text-center ${s.occupied ? 'bg-red-100 text-red-700' : 'bg-white text-green-700'}">
-      <div class="font-semibold">${s.id}</div>
+      <div class="font-semibold text-xs lg:text-sm">${s.id}</div>
       <div class="text-xs">${s.occupied ? 'Ocupado' : 'Libre'}</div>
     </div>
   `).join('');
@@ -736,18 +775,18 @@ function updateQuickSpaces() {
 function renderFullHistory() {
   fullHistory.innerHTML = meta.history.map(h => {
     if (h.type === 'entrada') {
-      return `<div class="p-2 border-b"><b>Entrada</b> - Placa: ${h.placa} | Espacio: ${h.espacio} <div class="text-xs text-gray-500">${h.time}</div></div>`;
+      return `<div class="p-2 border-b text-xs lg:text-sm"><b>Entrada</b> - Placa: ${h.placa} | Espacio: ${h.espacio} <div class="text-xs text-gray-500">${h.time}</div></div>`;
     } else if (h.type === 'salida') {
-      return `<div class="p-2 border-b"><b>Salida</b> - Placa: ${h.placa} | Cobro: $${(h.amount||0).toLocaleString()} <div class="text-xs text-gray-500">${h.time}</div></div>`;
+      return `<div class="p-2 border-b text-xs lg:text-sm"><b>Salida</b> - Placa: ${h.placa} | Cobro: $${(h.amount||0).toLocaleString()} <div class="text-xs text-gray-500">${h.time}</div></div>`;
     } else {
-      return `<div class="p-2 border-b"><b>Manual</b> - ${h.action} | Espacio: ${h.espacio || '-'} <div class="text-xs text-gray-500">${h.time}</div></div>`;
+      return `<div class="p-2 border-b text-xs lg:text-sm"><b>Manual</b> - ${h.action} | Espacio: ${h.espacio || '-'} <div class="text-xs text-gray-500">${h.time}</div></div>`;
     }
   }).join('');
 }
 
-/* ===========================
-   RENDER ALL
-   =========================== */
+// ===========================
+// RENDER ALL
+// ===========================
 function renderAll() {
   renderSpaces();
   renderVehiculosTable();
@@ -757,9 +796,9 @@ function renderAll() {
   renderFullHistory();
 }
 
-/* ===========================
-   INITIALIZATION ON LOAD
-   =========================== */
+// ===========================
+// INITIALIZATION ON LOAD
+// ===========================
 document.addEventListener('DOMContentLoaded', () => {
   // Pre-populate some spaces if none exist
   if (spaces.length === 0) {
